@@ -35,7 +35,7 @@ async def post_to_slack(subscriptions):
 class SubscriptionView(web.View):
     @aiohttp_jinja2.template('subscription.jinja2')
     async def get(self, request):
-        return {"username": "pass"}
+        return {}
 
     async def post(self, request):
         post_data = await request.post()
@@ -50,11 +50,9 @@ class SubscriptionView(web.View):
         return self.json({"thank you": "ok"})
 
 
-@faust.App.on_configured.connect()
-def configure(app, conf, **kwargs):
-    print("configured")
-
 # aiohttp app is available on app.web Faust app atribute
 aiohttp_jinja2.setup(app.web.web_app, loader=jinja2.FileSystemLoader('jinja_templates'))
-app.main()
+
+if __name__ == "__main__":
+    app.main()
 

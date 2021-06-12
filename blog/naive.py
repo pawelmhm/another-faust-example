@@ -27,7 +27,8 @@ class SubscriptionView(web.View):
         return web.Response(text='thanks')
 
 
-app = web.Application()
-app.add_routes(routes)
-aiohttp_jinja2.setup(app, loader=jinja2.FileSystemLoader('jinja_templates'))
-web.run_app(app)
+if __name__ == "__main__":
+    app = web.Application()
+    app.add_routes(routes)
+    aiohttp_jinja2.setup(app, loader=jinja2.FileSystemLoader('jinja_templates'))
+    web.run_app(app)
