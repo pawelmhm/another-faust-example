@@ -1,3 +1,6 @@
+# To run
+# faust -A blog.faust_view worker
+# server will listen on localhost:6066
 import time
 
 import aiohttp

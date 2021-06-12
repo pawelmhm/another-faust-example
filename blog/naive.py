@@ -1,3 +1,6 @@
+# To run
+# python blog/naive.py
+# server will listen on localhost:8088
 import aiohttp
 import aiohttp_jinja2
 import jinja2
@@ -10,6 +13,7 @@ routes = web.RouteTableDef()
 async def post_to_slack(username):
     async with aiohttp.ClientSession() as session:
         print(f"making request for {username}")
+        # make request to httpbin endpoint that returns after 9 secs delay
         async with session.get('https://httpbin.org/delay/9') as res:
             return await res.json()
 
