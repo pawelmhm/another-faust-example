@@ -17,10 +17,10 @@ async def post_to_slack(username):
 @routes.view("/")
 class SubscriptionView(web.View):
     @aiohttp_jinja2.template('subscription.jinja2')
-    async def get(self):
+    async def get(self) -> web.StreamResponse:
         return {'username': 'Jane Doe'}
 
-    async def post(self):
+    async def post(self) -> web.StreamResponse:
         post_data = await self.request.post()
         username = post_data['username']
         await post_to_slack(username)
